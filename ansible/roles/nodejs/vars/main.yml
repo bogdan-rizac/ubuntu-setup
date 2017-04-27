@@ -1,0 +1,7 @@
+npm_dependencies:
+  - gulp
+  - bower
+  - webpack
+
+nodejs_nodesource_pin_priority: 500
+nodejs_version: "6.x"

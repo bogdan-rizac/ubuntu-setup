@@ -1,0 +1,28 @@
+---
+- name: "Check if oh-my-zsh is installed"
+  stat: path=/home/{{ my_username.stdout }}/.oh-my-zsh
+  register: ohmyzsh_directory
+
+- name: "Clone oh-my-zsh repository"
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ my_username.stdout }}/.oh-my-zsh
+  become: yes
+  become_user: "{{ my_username.stdout }}"
+  register: result
+  ignore_errors: yes
+  when: ohmyzsh_directory.stat.exists == False
+
+- name: "Remove standard zshrc"
+  file: path=/home/{{ my_username.stdout }}/.zshrc state=absent
+  when: result|succeeded
+
+- name: "Deploy .zshrc"
+  template: src=zshrc.j2 dest=/home/{{ my_username.stdout }}/.zshrc owner={{ my_username.stdout }} group={{ my_username.stdout }}
+  become: yes
+  become_user: "{{ my_username.stdout }}"
+  ignore_errors: yes
+  when: result|succeeded
+
+- name: "Set zsh as default shell"
+  user: name={{ my_username.stdout }} shell=/bin/zsh
+  when: result|succeeded
+  become: yes

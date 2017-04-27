@@ -1,0 +1,16 @@
+---
+- name: "Download sublime DMG file"
+  get_url:
+     url: "https://download.sublimetext.com/sublime-text_build-3126_amd64.deb"
+     dest: /tmp/sublimetext.deb
+
+- name: "Install sublime text"
+  apt:
+     deb: /tmp/sublimetext.deb
+  become: yes
+
+- name: "Delete temporary file"
+  file:
+     path: /tmp/sublimetext.deb
+     state: absent
+

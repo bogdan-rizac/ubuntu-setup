@@ -1,0 +1,14 @@
+---
+- name: "Tap repositories"
+  homebrew_tap:
+    name: "{{ item }}"
+  with_items:
+    - homebrew/dupes
+    - homebrew/versions
+    - homebrew/homebrew-php
+
+- name: "Install PHP 7"
+  homebrew:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ php_items }}"

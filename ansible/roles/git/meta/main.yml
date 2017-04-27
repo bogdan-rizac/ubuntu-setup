@@ -1,0 +1,3 @@
+---
+dependencies:
+- { role: apt, app_name: "git" }

@@ -1,0 +1,4 @@
+---
+dependencies:
+- { role: homebrew_cask, app_name: "opera" }
+- { role: dock_add, app_name: Opera, app_path: "/Applications/Opera.app" }

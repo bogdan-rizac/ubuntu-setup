@@ -1,0 +1,4 @@
+---
+dependencies:
+- { role: dmg, app_name: "PhpStorm", dmg_url: "https://download.jetbrains.com/webide/PhpStorm-{{ phpstorm_version }}.dmg", when: phpstorm_version != '' }
+- { role: dock_add, app_name: 'PhpStorm', app_path: "/Applications/PhpStorm.app", when: phpstorm_version != '' }

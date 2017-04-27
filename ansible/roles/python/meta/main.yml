@@ -1,0 +1,5 @@
+---
+dependencies:
+- { role: apt, app_name: "python" }
+- { role: apt, app_name: "python3" }
+- { role: apt, app_name: "python-pip" }

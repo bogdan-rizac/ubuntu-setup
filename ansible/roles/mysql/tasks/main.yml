@@ -1,0 +1,6 @@
+---
+- name: "Install Mysql server"
+  homebrew:
+    name: mysql
+    state: present
+  ignore_errors: yes

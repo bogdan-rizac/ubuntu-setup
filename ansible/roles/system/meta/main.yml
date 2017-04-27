@@ -1,0 +1,6 @@
+---
+dependencies:
+- { role: apt, app_name: "vim" }
+- { role: apt, app_name: "mc" }
+- { role: apt, app_name: "tree" }
+- { role: apt, app_name: "curl" }

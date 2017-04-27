@@ -1,0 +1,6 @@
+---
+- name: "Set apt key for {{ app_name }}"
+  apt_key:
+    url: "{{ app_url }}"
+    state: present
+  become: yes

@@ -1,0 +1,8 @@
+---
+dependencies:
+- {
+  role: zip2app,
+  app_name: Postman,
+  app_zip_name: Postman.zip,
+  app_url: "https://dl.pstmn.io/download/latest/osx"
+}

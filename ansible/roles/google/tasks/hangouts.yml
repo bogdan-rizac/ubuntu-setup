@@ -1,0 +1,10 @@
+---
+- name: "Download Hangouts"
+  get_url:
+    url: "{{ hangouts_url_deb }}"
+    dest: "{{ hangouts_tmp_deb }}"
+
+- name: "Install hangouts for Debian"
+  apt:
+    deb: "{{ hangouts_tmp_deb }}"
+  become: yes

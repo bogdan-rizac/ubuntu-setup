@@ -1,0 +1,8 @@
+---
+dependencies:
+- {
+  role: zip2app,
+  app_name: Slack,
+  app_zip_name: Slack-2.5.2-macOS.zip,
+  app_url: "https://downloads.slack-edge.com/mac_releases/Slack-2.5.2-macOS.zip"
+}

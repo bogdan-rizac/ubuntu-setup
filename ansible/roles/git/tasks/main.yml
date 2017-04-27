@@ -1,0 +1,66 @@
+---
+- name: "Set core editor to vim"
+  git_config:
+    name: core.editor
+    scope: global
+    value: vim
+
+- name: "Set color"
+  git_config:
+    name: color.ui
+    scope: global
+    value: true
+
+- name: "When pulling code, always rebase your local changes. (note that you probably want to set this to false (or just fetch+merge instead of pull) when working on a shared remote branch (trains are fine). See https://git-scm.com/book/en/v2/Git-Branching-Rebasing)"
+  git_config:
+    name: pull.rebase
+    scope: global
+    value: true
+
+- name: "When pushing code, always push only your current branch to a branch of the same name"
+  git_config:
+    name: push.default
+    scope: global
+    value: current
+
+- name: "Automatically prune deleted branches from your local copy when you fetch (or pull)"
+  git_config:
+    name: fetch.prune
+    scope: global
+    value: true
+
+- name: "Tell git not to mess with your line endings"
+  git_config:
+    name: core.autocrlf
+    scope: global
+    value: false
+
+- name: "Show branch names with git log"
+  git_config:
+    name: log.decorate
+    scope: global
+    value: short
+
+- name: "Enable parallel index preload for operations like git diff"
+  git_config:
+    name: core.preloadindex
+    scope: global
+    value: true
+
+- name: "Git for Windows offers a filesystem cache which accelerates operations in many cases, after an initial 'warm-up'"
+  git_config:
+    name: core.fscache
+    scope: global
+    value: true
+
+- name: "Ignore symlinks"
+  git_config:
+    name: core.symlinks
+    scope: global
+    value: false
+
+- name: "Disable SSL verify"
+  git_config:
+    name: http.sslVerify
+    scope: global
+    value: false

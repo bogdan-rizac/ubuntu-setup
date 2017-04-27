@@ -1,0 +1,4 @@
+---
+dependencies:
+- { role: dmg, app_name: "PyCharm", dmg_url: "https://download.jetbrains.com/python/pycharm-community-{{ pycharm_version }}.dmg" }
+- { role: dock_add, app_name: 'PyCharm', app_path: "/Applications/PyCharm.app" }

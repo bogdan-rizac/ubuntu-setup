@@ -1,0 +1,8 @@
+---
+- name: "Install {{ app_name }}"
+  apt:
+    name: "{{ app_name }}"
+    state: present
+  become: yes
+  become_method: "sudo"
+  

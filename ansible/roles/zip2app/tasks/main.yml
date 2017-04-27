@@ -1,0 +1,39 @@
+---
+#
+# This role will be called from other roles
+# Variables:
+#   app_name -> the applicaiton name from /Applications directory
+#   app_url -> Download url for the appplication zip file
+#   app_zip_name -> The name of the archive saved on local drive
+#   skip_dock -> (optional) value True if you don't want the shortcut in the dock
+#
+- name: "Check if {{ app_name }} is installed"
+  local_action: stat path=/Applications/{{ app_name }}.app
+  register: app_exists
+
+- name: "Download {{ app_name }}. This might take a while."
+  get_url:
+    url: "{{ app_url }}"
+    dest: "/tmp/{{ app_zip_name }}"
+  when: app_exists.stat.exists == False
+
+- name: "Unzip {{ app_name }}"
+  unarchive:
+    src: "/tmp/{{ app_zip_name }}"
+    dest: /tmp/
+  when: app_exists.stat.exists == False
+
+- name: "Copy {{ app_name }} to Applications"
+  command: mv "/tmp/{{ app_name }}.app" /Applications/
+  when: app_exists.stat.exists == False
+
+- name: "Delete downloaded archive"
+  file:
+    path: "/tmp/{{ app_zip_name }}"
+    state: absent
+  when: app_exists.stat.exists == False
+
+- name: "Add {{ app_name }} to dock"
+  shell: dockutil --find '{{ app_name }}' || dockutil --add '/Applications/{{ app_name }}.app'
+  ignore_errors: true
+  when: app_exists.stat.exists == False and skip_dock|default(False) != True

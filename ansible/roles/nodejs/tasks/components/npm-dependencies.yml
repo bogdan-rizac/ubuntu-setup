@@ -1,0 +1,5 @@
+---
+- name: "Install NPM Dependencies"
+  npm: name={{ item }} global=yes
+  with_items: "{{ npm_dependencies }}"
+  become: yes

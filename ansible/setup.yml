@@ -1,0 +1,30 @@
+---
+- hosts: all
+
+  vars_files:
+    - config.yml
+
+  pre_tasks:
+    - name: "Get current user"
+      local_action: command whoami
+      register: my_username
+
+  roles:
+    - { role: system } # done
+#    - { role: python } # done
+#    - { role: git } # done
+#    - { role: firefox } # done
+#    - { role: google }
+    - { role: oh-my-zsh }
+#    - { role: opera }
+#    - { role: valentina-studio } # database visualization tool
+#    - { role: sublime-text } # done
+#    - { role: virtualbox }
+#    - { role: vagrant }
+#    - { role: php }
+#    - { role: composer }
+##    - { role: mysql } # @todo
+#    - { role: nodejs } # done
+#    - { role: phpstorm }
+#    - { role: pycharm }
+#    - { role: postman }
